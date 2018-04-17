@@ -1,7 +1,15 @@
 const bcrypt = require('bcryptjs')
 
 const modelUtils = schema => {
-  const validator = schema.reduce((acc, { key, type, optional = false, regexp = null, regexpMessage = null }) => {
+  const validator = schema.reduce((acc, {
+    key,
+    type,
+    optional = false,
+    regexp = null,
+    regexpMessage = null,
+    otherCondition = null,
+    otherConditionMessage = null
+  }) => {
     acc[key] = (value) => {
       if (!value && !optional) throw new Error(
         `${key} is required`
@@ -11,6 +19,9 @@ const modelUtils = schema => {
       )
       if (value && regexp && !value.match(regexp)) throw new Error(
         `${value} not valid for ${key}. ${regexpMessage}`
+      )
+      if (value && otherCondition && !otherCondition(value)) throw new Error(
+        `${value} not valid for ${key}. ${otherConditionMessage}`
       )
       return value
     }
