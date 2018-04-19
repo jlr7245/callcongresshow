@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS pols (
+  id SERIAL PRIMARY KEY,
+  first_name VARCHAR(255) NOT NULL,
+  middle_name VARCHAR(255),
+  last_name VARCHAR(255) NOT NULL,
+  st VARCHAR(255) NOT NULL,
+  district INT,
+  gender VARCHAR(255) NOT NULL,
+  chamber VARCHAR(255) NOT NULL,
+  party VARCHAR(255) NOT NULL
+);

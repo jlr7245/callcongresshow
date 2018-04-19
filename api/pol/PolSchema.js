@@ -4,26 +4,33 @@ const PolSchema = [
     optional: true,
     type: 'number'
   }, {
-    key: 'firstname',
+    key: 'first_name',
     type: 'string'
   }, {
-    key: 'middlename',
+    key: 'middle_name',
     type: 'string',
     optional: true
   }, {
-    key: 'lastname',
+    key: 'last_name',
     type: 'string'
   }, {
-    key: 'state',
+    key: 'st',
     type: 'string'
+  }, {
+    key: 'district',
+    type: 'number',
+    optional: true
   }, {
     key: 'party',
     type: 'string'
   }, {
     key: 'chamber',
     type: 'string',
-    otherCondition: (val) => ['House', 'Senate'].includes(val),
+    otherCondition: (val) => ['house', 'senate'].includes(val),
     otherConditionMessage: 'Must be either `house` or `senate`'
+  }, {
+    key: 'gender',
+    type: 'string'
   }
 ]
 

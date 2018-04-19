@@ -29,10 +29,10 @@ const modelUtils = schema => {
   }, {})
 
   return {
-    _modify: function(changes) {
+    _modify(changes) {
       return Object.assign(this, changes)
     },
-    _validate: (val, key) => {
+    _validate(val, key) {
       if (validator.hasOwnProperty(key)) return validator[key](val)
       throw new Error(`Property ${key} not found in validator`)
     }
